@@ -18,7 +18,7 @@ module.exports = function () {
 
 function get (table, column, condition, data, callback) {
   var query = firestore.collection(table)
-  if (data && condition && data) {
+  if (column != null && condition != null && data != null) {
     query = query.where(column, condition, data)
   }
 
