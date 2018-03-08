@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/components/Index'
-import Sessions from '@/components/Sessions'
+import Index from '@/components/Index/Index'
+import Sessions from '@/components/Sessions/Sessions'
 
 Vue.use(Router)
 

@@ -1,0 +1,11 @@
+.div-notes {
+  background-color: #FFFFFF;
+  height: 50px;
+  margin: 5px;
+}
+
+.collection-item {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
