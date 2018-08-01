@@ -5,16 +5,15 @@ const envPath = './src/environment/'
 
 const dbFactory = require(envPath + 'DBFactory')
 
-var db;
-var proxy;
-var router;
-
-module.exports = function(config) {
+module.exports = function(config, proxy, router, controllers) {
 	var module = {};
+	
 	module.start = function() {
 		db = dbFactory.getDB(config.db);
-		proxy = require(envPath + 'proxy') (db);
-		router = require(envPath + 'router') (app, proxy);
+
+		proxy.init(db);
+		controllers.init(proxy)
+		router.init(app, controllers);
 
 		startListening(config.port);
 	}
