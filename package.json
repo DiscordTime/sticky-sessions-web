@@ -1,0 +1,23 @@
+{
+  "name": "sticky-sessions-web",
+  "version": "1.0.0",
+  "description": "Web application for the Sticky Session app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiscordTime/sticky-sessions-web.git"
+  },
+  "author": "DiscordTime",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DiscordTime/sticky-sessions-web/issues"
+  },
+  "homepage": "https://github.com/DiscordTime/sticky-sessions-web#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "firebase-admin": "^5.13.1"
+  }
+}
