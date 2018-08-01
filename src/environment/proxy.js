@@ -1,6 +1,8 @@
-module.exports = function(db) {
+var db;
+
+module.exports = function() {
 	var module = {};
-	
+
 	module.getNotes = function(sessionId, res, callback) {
 		console.log(db)
 		db.getNotes('notes', sessionId, (err, snapshot) => {
@@ -9,4 +11,8 @@ module.exports = function(db) {
 	}
 
 	return module;
+}
+
+module.exports.init = function(db) {
+	this.db = db;
 }
