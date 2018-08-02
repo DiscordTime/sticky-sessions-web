@@ -1,5 +1,3 @@
-
-//TODO For now, the return is delt here.
 var callback = function(err, snapshot, res) {
 	if(err) {
 		console.err(err);
