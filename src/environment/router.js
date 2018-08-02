@@ -1,5 +1,5 @@
-const nodesFromSessionURL = '/session/:sessionId'
+const notesFromSessionURL = '/session/:sessionId'
 
 module.exports.init = function(app, controllers) {
-	app.get(nodesFromSessionURL, controllers.notesController.getNotesFromSession);
+	app.get(notesFromSessionURL, controllers.notesController.getNotesFromSession);
 }

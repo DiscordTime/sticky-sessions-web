@@ -1,7 +1,7 @@
 var db;
 
 module.exports.getNotes = function(sessionId, res, callback) {
-	this.db.getNotes('notes', sessionId, (err, snapshot) => {
+	this.db.getNotes(sessionId, (err, snapshot) => {
 		callback(err, snapshot, res)
 	})
 }
