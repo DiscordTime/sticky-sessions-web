@@ -1,4 +1,4 @@
 module.exports = {
-	port : 3000,
-	db : 'firebase'
+  port: 3000,
+  db: 'firebase'
 }

@@ -1,3 +1,3 @@
-module.exports.init = function(proxy) {
-	exports.notesController = require('./notesController')(proxy)
+module.exports.init = function (proxy) {
+  exports.notesController = require('./notesController')(proxy)
 }
