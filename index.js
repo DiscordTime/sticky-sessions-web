@@ -1,6 +1,6 @@
 const envPath = './src/environment/'
 const config = require('./keys/config');
-const proxy = require(envPath + 'proxy')();
+const proxy = require(envPath + 'proxy');
 const router = require(envPath + 'router');
 const controllers = require('./src/controllers/controllers')
 

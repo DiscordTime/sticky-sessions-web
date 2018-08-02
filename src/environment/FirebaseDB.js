@@ -6,6 +6,8 @@ admin.initializeApp( {
 
 const db = admin.firestore()
 
+const table_info = require('../../keys/table_info')
+
 function executeQuery(query, callback) {
   query.get()
   .then(querySnapshot => {
@@ -18,6 +20,6 @@ function executeQuery(query, callback) {
 }
 
 module.exports.getNotes = function(table, sessionId, callback) {
-  var query = db.collection(table).where('sessionId', '==', sessionId);
+  var query = db.collection(table_info.table_notes).where(table_info.column_notes_session_id, '==', sessionId);
   executeQuery(query, callback)
 }
