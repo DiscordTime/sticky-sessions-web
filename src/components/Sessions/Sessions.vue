@@ -1,20 +1,32 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <div
-      v-for="note in notes"
-      v-bind:key="note.id"
-      class="div-notes"
-    >
-      <div class="collection-item">
-        <div>{{note.topic}}</div>
-        <div>{{note.user}}</div>
-        <div>{{note.description}}</div>
-      </div>
+    <div id="container">
+      <div
+        v-for="(notes, key) in notesMap"
+        v-bind:key="key"
+        class="div-topic">
+
+        <p class="topic-title">
+          {{key}}
+        </p>
+
+        <b-card
+          v-for="note in notes"
+          v-bind:key="note.id"
+          v-bind:header="note.user"
+          border-variant="secondary"
+          header-border-variant="secondary"
+          class="note-card text-center" >
+            <p class="card-text">
+                {{note.description}}
+            </p>
+        </b-card>
     </div>
-    <div id="div-export">
-      <button @click=export_click>Export</button>
-    </div>
+  </div>
+  <div id="div-export">
+    <button @click=export_click>Export</button>
+  </div>
   </div>
 </template>
 

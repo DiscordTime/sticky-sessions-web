@@ -28,14 +28,10 @@ function get (table, column, condition, data, callback) {
 }
 
 module.exports.getNotes = function (sessionId, callback) {
+  const mapper = require('./mapper')
   get(dbInfo.NOTES_COLLECTION, dbInfo.SESSION_ID_FIELD, '==', sessionId, (querySnapshot) => {
-    var notes = []
-    querySnapshot.forEach(doc => {
-      var note = doc.data()
-      note['id'] = doc.id
-      console.log(note)
-      notes.push(note)
+    mapper.parseSnapshotToMap(querySnapshot, (map) => {
+      callback(map)
     })
-    callback(notes)
   })
 }

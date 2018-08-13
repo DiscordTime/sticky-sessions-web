@@ -1,11 +1,21 @@
-.div-notes {
+.note-card {
   background-color: #FFFFFF;
-  height: 50px;
   margin: 5px;
+  width: 300px;
 }
 
-.collection-item {
-  align-items: center;
+#container {
+  height: 100%;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
+}
+
+.card-text {
+	font-size: large;
+}
+
+.topic-title {
+	margin-left: 5px;
+	font-size: xx-large;
+	font-weight: bold;
 }
