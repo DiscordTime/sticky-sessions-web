@@ -4,13 +4,13 @@ export default {
   data () {
     return {
       title: 'Check your notes for this session',
-      notes: []
+      notesMap: {}
     }
   },
   created () {
     const sessionId = this.$route.params.sessionId
-    db.getNotes(sessionId, (notes) => {
-      this.notes = notes
+    db.getNotes(sessionId, (map) => {
+      this.notesMap = map
     })
   },
   methods: {
