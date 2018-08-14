@@ -12,16 +12,8 @@ export default {
 
 <style>
 body {
-  background: #ABCABC;
+  background: #EFF1F3;
   margin: 0;
 }
-/*#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  background: #ABCABC
-}*/
+
 </style>

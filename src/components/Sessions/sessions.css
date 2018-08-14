@@ -1,13 +1,37 @@
-.note-card {
-  background-color: #FFFFFF;
-  margin: 5px;
-  width: 300px;
-}
-
 #container {
   height: 100%;
   width: 100%;
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+}
+
+.div-topic {
+  flex: 0 1 auto;
+  margin-right: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.bt-export {
+  left: 60vw;
+}
+
+.card-header {
+  background-color: #00AED6;
+  height: .2rem; 
+}
+
+.note-card {
+  width: 200px; 
+  flex: 0 1 auto;
+  margin-bottom: 1rem;
+}
+.badge {
+  background-color: #FF7A63;
 }
 
 .card-text {
@@ -15,7 +39,25 @@
 }
 
 .topic-title {
-	margin-left: 5px;
-	font-size: xx-large;
-	font-weight: bold;
+  align-content: flex;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
 }
+
+@media (max-width: 950px) { 
+ 
+  #container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.md-app {
+  max-height: 400px;
+  border: 1px solid rgba(#000, .12);
+}
+
+
+
