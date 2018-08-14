@@ -30,6 +30,6 @@
   </div>
 </template>
 
-<script src="./sessions.js"/>
+<script src="./Sessions/sessions.js"/>
 
-<style scoped type="text/css" src="./sessions.css"/>
+<style scoped type="text/css" src="./Sessions/sessions.css"/>
