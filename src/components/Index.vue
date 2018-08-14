@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script src="./index.js" />
+<script src="./Index/index.js" />
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped src="./index.css" />
+<style scoped src="./Index/index.css" />
