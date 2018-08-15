@@ -3,6 +3,7 @@ export default {
   name: 'Sessions',
   data () {
     return {
+      windowHeight: 0,
       title: 'Check your notes for this session',
       notesMap: {}
     }

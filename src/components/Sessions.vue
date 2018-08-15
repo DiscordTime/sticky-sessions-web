@@ -17,21 +17,23 @@
           <span class="md-display-1 topic-title" >
             {{key}}
           </span>
-            <md-card
+            <div
               v-for="note in notes"
-              header=" "
               v-bind:key="note.id"
-              border-variant="secondary"
-              header-border-variant="secondary"
-              class="note-card text-center" >
-              <md-card-content>
+              class="note-card" >
+              <!-- <md-card-content class="card-text"> -->
+                <p class="p-description">
                     {{note.description}}
-              </md-card-content>
-              <md-card-actions>
+                </p>
+                <p class="p-user">
+                  {{note.user}}
+                </p>
+                <div class="cornershadow"> </div>
+              <!-- </md-card-content> -->
+              <!-- <md-card-actions>
                 <md-button class="md-primary" disabled>{{note.user}}</md-button>
-              </md-card-actions>
-
-            </md-card>
+              </md-card-actions> -->
+            </div>
         </div>
       </div>
     </md-app-content>
