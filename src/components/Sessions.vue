@@ -3,7 +3,7 @@
     <md-app>
     <md-app-toolbar class="md-primary">
       <span class="md-title">{{ title }}</span>
-      <md-button class="md-primary md-raised bt-export" @click=export_click >
+      <md-button class="md-primary md-raised" @click=export_click >
         Export
       </md-button>
     </md-app-toolbar>
@@ -25,14 +25,9 @@
                 <p class="p-description">
                     {{note.description}}
                 </p>
-                <p class="p-user">
+                <md-card-actions md-alignment="space-between" class="p-user">
                   {{note.user}}
-                </p>
-                <div class="cornershadow"> </div>
-              <!-- </md-card-content> -->
-              <!-- <md-card-actions>
-                <md-button class="md-primary" disabled>{{note.user}}</md-button>
-              </md-card-actions> -->
+                </md-card-actions>
             </div>
         </div>
       </div>
