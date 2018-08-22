@@ -9,7 +9,7 @@ firestore.settings(settings)
 
 const dbInfo = {
   NOTES_COLLECTION: 'notes',
-  SESSION_ID_FIELD: 'sessionId'
+  SESSION_ID_FIELD: 'session_id'
 }
 
 module.exports = function () {
