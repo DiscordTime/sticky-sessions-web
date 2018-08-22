@@ -1,75 +1,12 @@
 #container {
   display: flex;
   flex-flow: row wrap;
-
   justify-content: space-around;
   margin:0;
   padding:0;
   height:100%;
   width:100%;
   overflow:hidden;
-}
-
-.div-topic {
-  flex: 0 1 auto;
-  margin-right: 0.7rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.topic-title {
-  align-content: flex;
-  margin-bottom: 1rem;
-  text-transform: capitalize;
-}
-
-.note-card {
-  text-align:center;
-  padding: 0.5rem;
-  width: 225px;
-  flex: 0 1 auto;
-  margin: 1rem;
-  min-height:225px;
-  max-height:225px;
-  position:relative;
-  border:1px solid #E8E8E8;
-  border-top:20px solid #fdfd86;
-  font-family:'Reenie Beanie';
-  font-size:x-large;
-  border-bottom-right-radius: 60px 5px;
-  display:inline-block;
-  background: #ffff88; /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #ffff88 81%, #ffff88 82%, #ffff88 82%, #ffffc6 100%); /* FF3.6+ */
-  background: -webkit-linear-gradient(-45deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(-45deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(-45deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%); /* IE10+ */
-  background: linear-gradient(135deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffffc6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  color: #000
-}
-
-.note-card:after {
-  content: "";
-  position:absolute;
-  z-index:-1;
-  right:-0px; bottom:20px;
-  width:200px;
-  height: 25px;
-  background: rgba(0, 0, 0, 0.2);
-  box-shadow:2px 15px 5px rgba(0, 0, 0, 0.40);
-  -moz-transform: matrix(-1, -0.1, 0, 1, 0, 0);
-  -webkit-transform: matrix(-1, -0.1, 0, 1, 0, 0);
-  -o-transform: matrix(-1, -0.1, 0, 1, 0, 0);
-  -ms-transform: matrix(-1, -0.1, 0, 1, 0, 0);
-  transform: matrix(-1, -0.1, 0, 1, 0, 0);
-}
-
-.p-user {
-  text-transform: capitalize;
-  bottom: 0px;
-  position: absolute;
 }
 
 .md-app-content {
