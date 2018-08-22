@@ -9,27 +9,15 @@
     </md-app-toolbar>
     <md-app-content>
       <div id="container">
-        <div
+        <topic
           v-for="(notes, key) in notesMap"
           v-bind:key="key"
-          class="div-topic">
-
-          <span class="md-display-1 topic-title" >
-            {{key}}
-          </span>
-            <div
+          v-bind:topic="key">
+            <note
               v-for="note in notes"
-              v-bind:key="note.id"
-              class="note-card" >
-              <!-- <md-card-content class="card-text"> -->
-                <p class="p-description">
-                    {{note.description}}
-                </p>
-                <md-card-actions md-alignment="space-between" class="p-user">
-                  {{note.user}}
-                </md-card-actions>
-            </div>
-        </div>
+              v-bind:note="note"
+              v-bind:key="note.id"/>
+        </topic>
       </div>
     </md-app-content>
     </md-app>

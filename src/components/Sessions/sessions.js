@@ -1,3 +1,6 @@
+import Topic from '@/components/Topic'
+import Note from '@/components/Note'
+
 const db = require('@/db')
 export default {
   name: 'Sessions',
@@ -18,5 +21,9 @@ export default {
     export_click: function (event) {
       console.log('export!')
     }
+  },
+  components: {
+    'topic': Topic,
+    'note': Note
   }
 }
