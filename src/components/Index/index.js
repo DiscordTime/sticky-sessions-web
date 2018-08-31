@@ -1,9 +1,16 @@
+const db = require('@/db')
+
 export default {
   name: 'Index',
   data () {
     return {
-      msg: 'Welcome to Sticky Sessions',
-      hint: 'Pass a session id to check your notes'
+      sessions: {},
+      title: 'See the active Sessions'
     }
+  },
+  created () {
+    db.getSessions((sessions) => {
+      this.sessions = sessions
+    })
   }
 }
