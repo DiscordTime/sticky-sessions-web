@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 module.exports.parseSnapshotToMap = function (querySnapshot, callback) {
   var map = {}
   querySnapshot.forEach(doc => {
@@ -11,4 +13,17 @@ module.exports.parseSnapshotToMap = function (querySnapshot, callback) {
   })
 
   callback(map)
+}
+
+module.exports.parserSnapshotToSessions = function (querySnapshot, callback) {
+  var sessions = []
+
+  querySnapshot.forEach(doc => {
+    var session = doc.data()
+    const formatted = moment(moment.unix(session.timestamp.seconds)).format('DD-MM-YYYY HH:mm')
+    session['id'] = doc.id
+    session['time'] = formatted
+    sessions.push(session)
+  })
+  callback(sessions)
 }
