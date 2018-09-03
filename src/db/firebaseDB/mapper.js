@@ -1,18 +1,15 @@
 const moment = require('moment')
 
 module.exports.parseSnapshotToMap = function (querySnapshot, callback) {
-  var map = {}
+  var result = []
   querySnapshot.forEach(doc => {
     var note = doc.data()
     note['id'] = doc.id
-    const topic = note.topic
-    if (!map[note.topic]) {
-      map[topic] = []
-    }
-    map[topic].push(note)
+
+    result.push(note)
   })
 
-  callback(map)
+  callback(result)
 }
 
 module.exports.parserSnapshotToSessions = function (querySnapshot, callback) {
