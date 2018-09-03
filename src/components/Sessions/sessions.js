@@ -8,13 +8,22 @@ export default {
     return {
       windowHeight: 0,
       title: 'Check your notes for this session',
-      notesMap: {}
+      notesMap: {},
+      json_data_to_export: []
     }
   },
   created () {
     const sessionId = this.$route.params.sessionId
     db.getNotes(sessionId, (map) => {
-      this.notesMap = map
+      map.forEach(note => {
+        const topic = note.topic
+        if (!this.notesMap[note.topic]) {
+          this.notesMap[topic] = []
+        }
+        this.notesMap[topic].push(note)
+      })
+
+      this.json_data_to_export = map
     })
   },
   methods: {

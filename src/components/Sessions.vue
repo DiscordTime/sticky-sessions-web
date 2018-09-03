@@ -3,9 +3,11 @@
     <md-app>
     <md-app-toolbar class="md-primary">
       <span class="md-title">{{ title }}</span>
-      <md-button class="md-primary md-raised" @click=export_click >
-        Export
-      </md-button>
+          <download-excel :data  = "json_data_to_export" name = "sticky_sessions_export.xls">
+              <md-button class="md-primary md-raised" >
+                  Export
+              </md-button>
+          </download-excel>
     </md-app-toolbar>
     <md-app-content>
       <div id="container">
