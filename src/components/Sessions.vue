@@ -19,7 +19,7 @@
           @click.native="filter_topic(key)"
           v-if="filter_name == null || filter_name == key">
             <note
-              v-for="note in notes"
+              v-for="note in sorted_notes(notes)"
               v-bind:note="note"
               v-bind:key="note.id"/>
         </topic>

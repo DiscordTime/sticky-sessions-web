@@ -37,6 +37,16 @@ export default {
         this.filter_name = topic
         this.custom_class = 'div-topic-row'
       }
+    },
+    sorted_notes (notes) {
+      return notes.slice().sort((left, right) => {
+        if (left.user.toLowerCase() < right.user.toLowerCase()) {
+          return -1
+        } else if (left.user.toLowerCase() > right.user.toLowerCase()) {
+          return 1
+        }
+        return 0
+      })
     }
   },
   components: {
