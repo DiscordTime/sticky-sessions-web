@@ -14,7 +14,10 @@
         <topic
           v-for="(notes, key) in notesMap"
           v-bind:key="key"
-          v-bind:topic="key">
+          v-bind:topic="key"
+          v-bind:note_container_class="custom_class"
+          @click.native="filter_topic(key)"
+          v-if="filter_name == null || filter_name == key">
             <note
               v-for="note in notes"
               v-bind:note="note"

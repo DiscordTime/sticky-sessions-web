@@ -1,17 +1,14 @@
 <template>
-    <div class="div-topic">
-          <span class="md-display-1 topic-title" >
+    <div class="subcontainer-topic">
+          <a class="md-display-1 topic-title">
             {{topic}}
-          </span>
-          <slot></slot>
+          </a>
+          <div v-bind:class="note_container_class">
+            <slot></slot>
+          </div>
     </div>
 </template>
 
-<script>
-export default {
-  name: 'topic',
-  props: ['topic']
-}
-</script>
+<script src="./Topic/topic.js"/>
 
 <style scoped type="text/css" src="./Topic/topic.css">

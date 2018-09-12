@@ -6,9 +6,29 @@
     justify-content: flex-start;
     align-items: center;
   }
-  
+
+.div-topic-row {
+    flex: 0 1 auto;
+    margin-right: 0.7rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+
 .topic-title {
+    flex: 0 1 auto;
+    align-self: center;
     align-content: flex;
     margin-bottom: 1rem;
     text-transform: capitalize;
+}
+
+.subcontainer-topic {
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
 }

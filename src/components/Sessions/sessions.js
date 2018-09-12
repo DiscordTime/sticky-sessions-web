@@ -9,7 +9,9 @@ export default {
       windowHeight: 0,
       title: 'Check your notes for this session',
       notesMap: {},
-      json_data_to_export: []
+      json_data_to_export: [],
+      filter_name: null,
+      custom_class: 'div-topic'
     }
   },
   created () {
@@ -27,8 +29,14 @@ export default {
     })
   },
   methods: {
-    export_click: function (event) {
-      console.log('export!')
+    filter_topic (topic) {
+      if (topic === this.filter_name) {
+        this.filter_name = null
+        this.custom_class = 'div-topic'
+      } else {
+        this.filter_name = topic
+        this.custom_class = 'div-topic-row'
+      }
     }
   },
   components: {
