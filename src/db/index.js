@@ -1,7 +1,7 @@
 const config = require('../../config')
-console.log(config)
 const dbFactory = require('./DBFactory')
-this.db = dbFactory.getDB(config.DB)
+
+this.db = dbFactory.getDB(config.build.DB)
 
 module.exports.getNotes = function (sessionId, callback) {
   this.db.getNotes(sessionId, (notes) => {
