@@ -1,11 +1,13 @@
-
-module.exports.getDB = function (type) {
-  console.log(type)
-  var db
-  switch (type) {
-    case 'firebase':
-    default:
-      db = require('./firebaseDB')
+module.exports = {
+  getDB: function (type) {
+    console.log(type)
+    var db
+    switch (type) {
+      case 'firebase':
+      default:
+        db = require('./firebaseDB')
+        break
+    }
+    return db
   }
-  return db
 }
