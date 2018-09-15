@@ -11,7 +11,8 @@ export default {
       notesMap: {},
       json_data_to_export: [],
       filter_name: null,
-      custom_class: 'div-topic'
+      custom_class: 'div-topic',
+      current_author: null
     }
   },
   created () {
@@ -24,18 +25,19 @@ export default {
         }
         this.notesMap[topic].push(note)
       })
-
       this.json_data_to_export = map
     })
   },
   methods: {
     filter_topic (topic) {
-      if (topic === this.filter_name) {
-        this.filter_name = null
-        this.custom_class = 'div-topic'
-      } else {
-        this.filter_name = topic
-        this.custom_class = 'div-topic-row'
+      return () => {
+        if (topic === this.filter_name) {
+          this.filter_name = null
+          this.custom_class = 'div-topic'
+        } else {
+          this.filter_name = topic
+          this.custom_class = 'div-topic-row'
+        }
       }
     },
     sorted_notes (notes) {
@@ -47,6 +49,15 @@ export default {
         }
         return 0
       })
+    },
+    filter_by_author (note) {
+      return () => {
+        if (this.current_author == null || this.current_author.toLowerCase() !== note.user.toLowerCase()) {
+          this.current_author = note.user
+        } else {
+          this.current_author = null
+        }
+      }
     }
   },
   components: {

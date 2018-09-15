@@ -12,7 +12,7 @@
           v-for="session in sessions"
           v-bind:key="session.id"
           v-bind:to="'/sessions/'+session.id">
-          {{ session.id }}
+          {{ session.name }}
           {{ session.time }}
         </md-list-item>
       </md-list>

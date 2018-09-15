@@ -16,11 +16,13 @@
           v-bind:key="key"
           v-bind:topic="key"
           v-bind:note_container_class="custom_class"
-          @click.native="filter_topic(key)"
+          v-bind:filter_by_topic="filter_topic(key)"
           v-if="filter_name == null || filter_name == key">
             <note
               v-for="note in sorted_notes(notes)"
               v-bind:note="note"
+              v-bind:filter_by_author="filter_by_author(note)"
+              v-if="current_author == null || current_author.toLowerCase() == note.user.toLowerCase()"
               v-bind:key="note.id"/>
         </topic>
       </div>
