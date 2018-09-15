@@ -1,14 +1,14 @@
 .note-card {
     text-align:center;
     padding: 0.5rem;
-    width: 225px;
+    width: 185px;
     flex: 0 1 auto;
     margin: 1rem;
-    min-height:225px;
-    max-height:225px;
+    min-height:185px;
+    max-height:185px;
     position:relative;
     border:1px solid #E8E8E8;
-    border-top:20px solid #fdfd86;
+    border-top:0px solid #fdfd86;
     font-family:'Reenie Beanie';
     font-size:x-large;
     border-bottom-right-radius: 60px 5px;
@@ -22,7 +22,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffffc6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     color: #000
   }
-  
+
 .note-card:after {
     content: "";
     position:absolute;
