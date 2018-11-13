@@ -1,10 +1,5 @@
 <template>
 <div id="page-container">
-    <div id="toolbar">
-      <md-app-toolbar class="md-primary">
-        <span class="md-title">{{ title }}</span>
-      </md-app-toolbar>
-    </div>
     <div>
       <md-list>
         <md-list-item
