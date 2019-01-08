@@ -1,16 +1,17 @@
 .note-card {
     text-align:center;
-    padding: 0.5rem;
-    width: 185px;
+    line-height:1.5rem;
+    font-family: 'Lato', sans-serif;
+    padding: 0rem 0.5rem 0.5rem 0.5rem;
+    width: 200px;
     flex: 0 1 auto;
     margin: 1rem;
-    min-height:185px;
-    max-height:185px;
+    min-height:200px;
+    max-height:200px;
     position:relative;
     border:1px solid #E8E8E8;
     border-top:0px solid #fdfd86;
-    font-family:'Reenie Beanie';
-    font-size:x-large;
+    font-size:large;
     border-bottom-right-radius: 60px 5px;
     display:inline-block;
     background: #ffff88; /* Old browsers */
