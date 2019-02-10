@@ -54,19 +54,9 @@ jobs:
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
       - setup_remote_docker:
           docker_layer_caching: true
-      - run:
-          name: Insert Firebase Service Account File
-          command: echo $FIREBASE_DB > src/db/firebaseDB/keys/index.js
       - run: 
           name: Docker Build, Push and Deploy
-          command: |
-            docker build -t ${IMAGE_NAME} .
-            docker tag ${IMAGE_NAME} gcr.io/${GOOGLE_PROJECT_ID}/${IMAGE_NAME}:${CIRCLE_SHA1}
-            docker tag ${IMAGE_NAME} gcr.io/${GOOGLE_PROJECT_ID}/${IMAGE_NAME}:latest
-            gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
-            docker push gcr.io/${GOOGLE_PROJECT_ID}/${IMAGE_NAME}:${CIRCLE_SHA1}
-            docker push gcr.io/${GOOGLE_PROJECT_ID}/${IMAGE_NAME}:latest
-            gcloud --quiet compute ssh stick-sessions --zone us-east1-b -- 'cd /home/app && ./restart_client.sh'
+          command: scripts/deploy.sh
 
 workflows:
   version: 2
