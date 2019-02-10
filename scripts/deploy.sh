@@ -16,7 +16,9 @@ gcloud auth print-access-token | docker login -u oauth2accesstoken --password-st
 # Builds Docker image
 docker build -t ${IMAGE_NAME} .
 
-if [ "$CIRCLE_BRANCH" = "issue_55" ]; then
+if [ "$CIRCLE_BRANCH" = "dev" ]; then
+  echo "Deploying application to Staging environment"
+
   # Injects firebase DB file
   echo $FIREBASE_DB_STAG > src/db/firebaseDB/keys/index.js
 
@@ -29,6 +31,8 @@ if [ "$CIRCLE_BRANCH" = "issue_55" ]; then
   # Deploys application
   gcloud --quiet compute ssh stick-sessions --zone us-east1-b -- 'cd /home/app && ./restart_client_stag.sh'
 elif [ "$CIRCLE_BRANCH" = "master" ]; then
+  echo "Deploying application to Production environment"
+
   # Injects firebase DB file
   echo $FIREBASE_DB > src/db/firebaseDB/keys/index.js
 
