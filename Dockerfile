@@ -1,8 +1,5 @@
 FROM node:lts-alpine as dev
 
-# install simple http server for serving static content
-RUN npm install -g http-server
-
 # make the 'app' folder the current working directory
 WORKDIR /app
 
@@ -19,7 +16,7 @@ COPY . .
 RUN npm run build
 
 EXPOSE 8080
-CMD [ "http-server", "dist" ]
+CMD [ "npm", "run", "dev" ]
 
 # production stage
 FROM nginx:stable-alpine as prod
