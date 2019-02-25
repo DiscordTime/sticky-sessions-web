@@ -39,3 +39,31 @@ jobs:
 
       # run tests!
 #- run: yarn test
+  deploy:
+    docker:
+      - image: google/cloud-sdk
+    working_directory: ~/sticky-sessions-web
+    steps:
+      - checkout
+      - run: 
+          name: Setup Google Cloud SDK
+          command: scripts/setup.sh
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run: 
+          name: Docker Build, Push and Deploy
+          command: scripts/deploy.sh
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: 
+                - dev
+                - master
