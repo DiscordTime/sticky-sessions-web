@@ -49,5 +49,5 @@ docker build --target dev -t sticky-web-client-dev .
 And to use ir for development you can bind a volume to the project folder and add the HOST variable to enable Hot Reload:
 
 ```
-docker run -it -p 8080:8080 -v $(pwd):/app -e HOST=0.0.0.0 --rm sticky-web-client-dev
+docker run -it -p 8080:8080 -v $(pwd)/src:/app/src -e HOST=0.0.0.0 --rm sticky-web-client-dev
 ```
