@@ -13,7 +13,7 @@ fi
 # Authenticate to Google Container Registry
 gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
 
-if [ "$CIRCLE_BRANCH" = "issue_55_cd" ]; then
+if [ "$CIRCLE_BRANCH" = "dev" ]; then
   echo "Deploying application to Staging environment"
 
   # Injects firebase DB file
