@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1{fill:#fff}.cls-2{fill:none}
+        </style>
+    </defs>
+    <g id="ic_google" transform="translate(4.142 4)">
+        <path id="Shape" d="M15.163 21.714v-3.02h7.673A9.179 9.179 0 0 1 23 20.327c0 4.653-3.1 8-7.837 8a8.163 8.163 0 1 1 0-16.327 7.857 7.857 0 0 1 5.469 2.122l-2.286 2.286a4.45 4.45 0 0 0-3.184-1.224 4.98 4.98 0 0 0 0 9.959 4.246 4.246 0 0 0 4.49-3.429z" class="cls-1" transform="translate(-7 -12)"/>
+        <path id="Retângulo_76" d="M0 0h24v24H0z" class="cls-2" data-name="Retângulo 76" transform="translate(-4.142 -4)"/>
+    </g>
+</svg>
