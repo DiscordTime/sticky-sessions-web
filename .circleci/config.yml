@@ -37,6 +37,14 @@ jobs:
 
       - run: npm run-script build
 
+      - run: 
+          name: Build react app
+          command: |
+            cd sticky-react
+            npm install
+            rm -rf ../node_modules/
+            npm run build
+
       # run tests!
 #- run: yarn test
   deploy:
