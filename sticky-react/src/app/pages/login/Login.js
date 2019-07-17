@@ -2,18 +2,17 @@ import React, {Component} from 'react';
 //Components
 import ButtonGoogleLogin from '../../components/buttonLogin/ButtonGoogleLogin';
 import * as ROUTES from '../../constants/routes';
+import * as SETTINGS from '../../constants/settings'
 //Assets
 import logo from '../../../assets/logo.svg';
 //Css
 import './Login.css';
 import { Container } from '@material-ui/core';
 
-const VALID_MAIL = "@cesar.org.br";
-
 class Login extends Component {
 
     validUser = (user) => {
-        if(user.email.endsWith(VALID_MAIL)) {
+        if(user.email.endsWith(SETTINGS.VALID_MAIL)) {
             window.location.replace(ROUTES.HOME)
         }
     }
