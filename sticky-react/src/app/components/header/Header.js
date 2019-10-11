@@ -4,70 +4,160 @@ import {
     AppBar,
     Toolbar,
     IconButton,
-    Typography
+    Typography,
+    Button,
+    Menu
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import Icon from '@material-ui/core/Icon';
 
 //logo
 import logo from '../../../assets/logo_name.svg'
 
-
 class Header extends React.Component {
 
+    constructor(props) {
+        super(props)
+        
+        this.userDialogOpen = false
+        this.handleUserMenuClick = this.handleUserMenuClick.bind(this)
+        this.handleQuitBtnClick = this.handleQuitBtnClick.bind(this)
+  
+        this.menu = [
+            {
+                title:"Sign out",
+                onClick: this.handleQuitBtnClick        
+            }
+        ]
+    }
+
     componentWillReceiveProps(props){
+        this.firebaseAuth = props.firebaseAuth
         this.user = props.user
     }
 
-    handleQuit(){
-        
+    handleUserMenuClick(open){
+        this.userDialogOpen = open
+    }
+
+    handleQuitBtnClick() {
+        this.firebaseAuth.signOut()
     }
     
     render(){
 
         return(
-            <div >
-
+            <div>
                 {
-                    this.user && (
-                        <AppBar style={{boxShadow:'0 0 4px 0 rgba(0, 0, 0, 0.16)',zIndex:'1400',position:'absolute'}} position="static" color="default">
-                            <Toolbar  >
-                                <IconButton onClick={this.toggleDrawer} edge="start" aria-label="Menu" color="secondary">
-                                    <MenuIcon />
-                                </IconButton>
-                                <img src={logo} alt="Easy Prefix" style={{marginLeft:'25px'}}/>
-                                
-                                <div style={{marginLeft:'auto'}} >
-                                    <IconButton
-                                        aria-label="Account of current user"
-                                        aria-controls="menu-appbar"
-                                        aria-haspopup="true"
-                                        color="inherit"
-                                        size="medium"
-                                        style={{borderRadius:'5%'}}>
-                                        <FirstLetterIcon name={this.user.displayName} color="#ff534b" textColor="white"/>
-                                        <Typography variant="subtitle2" style={{margin:' 0 10px'}} >{this.user.displayName}</Typography>
-                                        <Icon>arrow_drop_down</Icon>
-                                    </IconButton>
-                                
-                                </div>
-                            </Toolbar>
-                        </AppBar>
-                    )
+                this.user && (
+                    <AppBar 
+                        style={{boxShadow:'0 0 4px 0 rgba(0, 0, 0, 0.16)',
+                                zIndex:'1400',
+                                position:'absolute'}} 
+                        position="static" 
+                        color="default">
+                        <Toolbar>
+                            <IconButton 
+                                onClick={this.toggleDrawer} 
+                                edge="start" 
+                                aria-label="Menu" 
+                                color="secondary">
+                                <MenuIcon />
+                            </IconButton>
+                            <img 
+                                src={logo} 
+                                alt="Easy Prefix" 
+                                style={{marginLeft:'25px'}}/>
+                            <div style={{marginLeft:'auto'}} >
+                                <UserMenu user={this.user} menu={this.menu}/>
+                            </div>
+                        </Toolbar>
+                    </AppBar>
+                )
                 }
-
             </div>
         );
     }
+}
+
+const UserMenu = (props) => {
+    const {user,menu} = props
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl)
+
+    const handleClose = () => {
+        setAnchorEl(null)
+    }
+
+    return (
+        <div>
+            <Button
+                aria-label="Account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                color="inherit"
+                disableTouchRipple={true}
+                size="medium"
+                onClick={(evt)=> setAnchorEl(evt.currentTarget)}
+                >
+                    <FirstLetterIcon 
+                        name={user.displayName} 
+                        color="#ff534b" 
+                        textColor="white"/>
+                    <Typography 
+                        variant="subtitle2" 
+                        style={{margin:' 0 10px'}}>
+                        {user.displayName}
+                    </Typography>
+                    <Icon>arrow_drop_down</Icon>
+            </Button>
+            <Menu 
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+            }}
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: 'center',
+            }}
+            open={open}
+            onClose={() => handleClose()}
+            >       
+                {
+                    menu && (
+                        menu.map(item => 
+                            <MenuItem onClick={item.onClick}>
+                                {item.title}
+                            </MenuItem>)
+                    )
+                }
+                
+            </Menu>
+        </div>
+            
+    )
 }
 
 const FirstLetterIcon = (props) =>{
     const {name,color,textColor} = props
     
     return(
-        <div style={{backgroundColor:color,width:'30px',height:'30px', borderRadius:'50%',textAlign:'center',verticalAlign:'middle'}}>
+        <div style={{
+            backgroundColor:color,
+            width:'30px',
+            height:'30px',
+            borderRadius:'50%',
+            textAlign:'center',
+            verticalAlign:'middle'}}>
             {name &&(
-                <p style={{margin:0,lineHeight:'30px',color:textColor}}>{name.split("")[0]}</p>
+                <p style={{
+                    margin:0,
+                    lineHeight:'30px',
+                    color:textColor
+                }}> {name.split("")[0]}</p>
             )}
         </div>
     )
