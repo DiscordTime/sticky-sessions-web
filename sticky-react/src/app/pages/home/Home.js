@@ -16,6 +16,7 @@ const providers = fire.providers;
 
 class Home extends Component {
     componentWillReceiveProps(props){
+
         if(props.user == null) {
             window.location.replace(ROUTES.SIGN_IN)
         }
@@ -26,7 +27,7 @@ class Home extends Component {
     render() {
         return(
             <div className="homeRoot">
-                <Header user={this.user}/>
+                <Header user={this.user} firebaseAuth={firebaseAppAuth}/>
                 <div className="bodyWrapper">
                     <iframe  width="100%" height="100%" style={{marginTop:'-5px'}}  src={process.env.REACT_APP_HOME_URL} title="Sticky sessions"/>
                     <Drawer/>
