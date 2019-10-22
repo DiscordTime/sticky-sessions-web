@@ -56,8 +56,7 @@ jobs:
       - run: 
           name: Setup Google Cloud SDK
           command: scripts/setup.sh
-      - setup_remote_docker:
-          docker_layer_caching: true
+      - setup_remote_docker
       - run: 
           name: Docker Build, Push and Deploy
           command: scripts/deploy.sh
