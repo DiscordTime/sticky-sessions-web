@@ -1,10 +1,11 @@
 .drawer{
     width: 70px;
     height: 100%;
-    left: 0;
+    position: relative;
     display: flex;
     flex-direction: column;
-    padding-top: 100px;
+    float: left;
+    padding-top: 20px;
     background-color: #ffffff; /*default*/
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     transition: 0.2s;

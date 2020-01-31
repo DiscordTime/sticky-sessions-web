@@ -1,0 +1,46 @@
+.formBoxContainer {
+    height: auto;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 29px 29px;
+    margin-bottom: 23px;
+    margin-right: 23px;
+    box-sizing: border-box;
+
+}
+
+.formWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    align-content: space-between;
+    flex-basis: 50%;
+    flex-grow: 1;
+}
+
+.formWrapper > div {
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+.formBoxTitle {
+    height: 19px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    margin: 0;
+    color: #8b8b8b;
+}
+
+.formBoxChildWrapper {
+    margin-top: 29px;
+}

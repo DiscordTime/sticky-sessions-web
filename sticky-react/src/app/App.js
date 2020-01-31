@@ -11,6 +11,8 @@ import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
 //Typeface
 import 'typeface-roboto';
+import NewMeeting from "./pages/newMeeting/NewMeeting";
+import Meetings from "./pages/meetings/Meetings";
 
 const theme = createMuiTheme({
   palette:{
@@ -19,7 +21,11 @@ const theme = createMuiTheme({
     },
     secondary:{
       main:'#ff534b'
+    },
+    white:{
+        main:'#ffffff'
     }
+
   }
 })
 
@@ -30,7 +36,8 @@ class App extends Component {
               <BrowserRouter>
                 <Switch>
                     <Route exact path={ROUTES.SIGN_IN} component={Login} />
-                    <Route path={ROUTES.SIGN_IN} component={Home} />
+                    <Route  path={ROUTES.HOME} component={Home}/>
+                    <Route path={ROUTES.NEW_MEETING} render={ () => <NewMeeting/>}/>
                 </Switch>
               </BrowserRouter>
             </ThemeProvider>

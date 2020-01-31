@@ -12,8 +12,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Icon from '@material-ui/core/Icon';
 
+import * as ROUTES from '../../constants/routes';
+
+//CSS
+import './Header.css'
 //logo
 import logo from '../../../assets/logo_name.svg'
+import {Link} from "react-router-dom";
 
 class Header extends React.Component {
 
@@ -34,7 +39,7 @@ class Header extends React.Component {
 
     componentWillReceiveProps(props){
         this.firebaseAuth = props.firebaseAuth
-        this.user = props.user
+        this.user = this.firebaseAuth.currentUser
     }
 
     handleUserMenuClick(open){
@@ -54,7 +59,7 @@ class Header extends React.Component {
                     <AppBar 
                         style={{boxShadow:'0 0 4px 0 rgba(0, 0, 0, 0.16)',
                                 zIndex:'1400',
-                                position:'absolute'}} 
+                                position:'relative'}}
                         position="static" 
                         color="default">
                         <Toolbar>
@@ -63,13 +68,30 @@ class Header extends React.Component {
                                 edge="start" 
                                 aria-label="Menu" 
                                 color="secondary">
-                                <MenuIcon />
+                                <MenuIcon/>
                             </IconButton>
                             <img 
                                 src={logo} 
                                 alt="Easy Prefix" 
                                 style={{marginLeft:'25px'}}/>
-                            <div style={{marginLeft:'auto'}} >
+
+                            <div style={{marginLeft:'auto',display:"flex",alignItems:'center'}} >
+                                <Link style={{textDecoration:'None'}} to={ROUTES.NEW_MEETING}>
+                                    <Button style={{
+                                        width:'179px',
+                                        height:'48px',
+                                        boxShadow:'0 0 2px 0 rgba(0, 0, 0, 0.12)',
+                                        backgroundColor:'#ff534b',
+                                        textTransform: 'none',
+                                        marginRight:'15px',
+                                        borderRadius:'0',
+                                        color:'#ffffff',
+                                        display:'flex'
+                                    }}>
+                                        <Icon color="white">add</Icon>
+                                        New session
+                                    </Button>
+                                </Link>
                                 <UserMenu user={this.user} menu={this.menu}/>
                             </div>
                         </Toolbar>

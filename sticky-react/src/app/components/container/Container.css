@@ -1,0 +1,37 @@
+.containerRoot {
+    width: 100%;
+    background-color: #f3f3f3;
+}
+
+.containerWrapper {
+    margin: 0 auto;
+    max-width: 1400px;
+    height:100%;
+    padding-top: 40px;
+
+}
+
+.title {
+    width: 197px;
+    height: 38px;
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.66;
+    letter-spacing: normal;
+    text-align: left;
+    margin: 0;
+    color: #272727;
+}
+
+.underline {
+    width: 99px;
+    height: 4px;
+    background-color: #ff534b;
+}
+
+.childWrapper {
+    margin-top: 35px;
+}
