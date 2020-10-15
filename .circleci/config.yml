@@ -72,5 +72,5 @@ workflows:
           filters:
             branches:
               only: 
-                - dev
+                - deploy_fix
                 - master

@@ -30,7 +30,7 @@ if [ "$CIRCLE_BRANCH" = "dev" ]; then
 
   # Injects react env variables
   echo $REACT_ENV_STAG | base64 -di > sticky-react/.env
-elif [ "$CIRCLE_BRANCH" = "master" ]; then
+elif [ "$CIRCLE_BRANCH" = "deploy_fix" ]; then
   echo "Deploying application to Production environment"
 
   # Injects firebase DB file
