@@ -1,53 +1,46 @@
-# Sticky Sessions Web
+# Getting Started with Create React App
 
-[![CircleCI](https://circleci.com/gh/DiscordTime/sticky-sessions-web.svg?style=svg)](https://circleci.com/gh/DiscordTime/sticky-sessions-web)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-> Sticky Sessions is an application that helps medium to large teams to share and store their thoughts through digital-like retrospective sessions. This is the repository of the Web client.
+## Available Scripts
 
-## Build Setup
+In the project directory, you can run:
 
-``` bash
-# install dependencies
-npm install
+### `npm start`
 
-# serve with hot reload at localhost:8080
-npm run dev
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-# build for production with minification
-npm run build
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+### `npm test`
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Docker Setup
+### `npm run build`
 
-There is also the option to develop and build the application using Docker.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The application's [Dockerfile](Dockerfile) is a multi-stage Dockerfile. It has a base development image that can be used in a dev environemt, this base image contains all projects's dependencies. The production image only has the application and necessary libs to serve the app in a production environment.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-It is possible to build the production image with the following command:
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-```
-docker build -t sticky-web-client-prod .
-```
+### `npm run eject`
 
-In order to run the application you can eith run:
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-```
-docker run -it -p 80:80 --rm sticky-web-client-prod
-```
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-If you wish to build the development image you only need to add the target flag with the image name:
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-```
-docker build --target dev -t sticky-web-client-dev .
-```
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-And to use ir for development you can bind a volume to the project folder and add the HOST variable to enable Hot Reload:
+## Learn More
 
-```
-docker run -it -p 8080:8080 -v $(pwd)/src:/app/src -e HOST=0.0.0.0 --rm sticky-web-client-dev
-```
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
