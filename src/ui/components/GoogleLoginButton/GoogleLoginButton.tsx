@@ -1,13 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Button } from '@material-ui/core';
-import { auth, Providers } from '../../config/firebase'
-import { IResultObj } from '../pages/Login'
+// Firebase
+import { auth, Providers } from '../../../config/firebase'
+// css files
+import './GoogleLoginButton.css'
+// Assets
+import logoGoogle from '../../../assets/google.svg';
+
+import { IResultObj } from '../../pages/Login/Login'
 
 interface IGoogleLoginButtonProps {
   signInCallback: (returnObj: IResultObj) => void
 }
 
-class GoogleLoginButton extends Component<IGoogleLoginButtonProps, {}> {
+class GoogleLoginButton extends React.Component<IGoogleLoginButtonProps, {}> {
 
   signInCallback(returnObj: IResultObj) {
     if (this.props.signInCallback) {
@@ -36,8 +42,12 @@ class GoogleLoginButton extends Component<IGoogleLoginButtonProps, {}> {
     return(
       <Button 
         variant="contained"
+        className="btnLogin"
         onClick={this.signInGoogle}>
-        Google Login
+        <img className="btnImg" src={logoGoogle} alt="Login with Google" />
+        <div className="btnText">
+          Log In with Gmail
+        </div>
       </Button>
     );
   }

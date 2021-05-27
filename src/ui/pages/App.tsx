@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Server } from '../../data/datasource/server'
 import { DataSource } from '../../data/datasource/DataSource'
-import Login, { IResultObj } from './Login'
+import Login, { IResultObj } from './Login/Login'
 
 class App extends React.Component {
 

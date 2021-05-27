@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 //Css
 //import './Login.css';
 import { Container } from '@material-ui/core';
-import GoogleLoginButton from '../components/GoogleLoginButton'
+import GoogleLoginButton from '../../components/GoogleLoginButton/GoogleLoginButton'
 
 export interface IResultObj {
   success: Boolean,
