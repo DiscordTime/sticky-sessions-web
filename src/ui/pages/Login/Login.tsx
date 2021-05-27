@@ -1,16 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-//Components
-//import ButtonGoogleLogin from '../../components/buttonLogin/ButtonGoogleLogin';
-//import * as ROUTES from '../../constants/routes';
-//import * as SETTINGS from '../../constants/settings'
-//Assets
-//import logo from '../../../assets/logo.svg';
-//Css
-//import './Login.css';
 import { Container } from '@material-ui/core';
 import GoogleLoginButton from '../../components/GoogleLoginButton/GoogleLoginButton'
 
+//Assets
+import logo from '../../../assets/logo.svg'
+//Css
+import './Login.css';
 export interface IResultObj {
   success: Boolean,
   user?: Object
@@ -20,7 +16,7 @@ interface LoginProps {
   loginCallback: (returnObj: IResultObj) => void
 }
 
-class Login extends Component<LoginProps, {}> {
+class Login extends React.Component<LoginProps, {}> {
 
   constructor(props: LoginProps) {
     super(props)
@@ -45,9 +41,18 @@ class Login extends Component<LoginProps, {}> {
 
   render() {
     return(
-      <Container maxWidth="sm">
+      <div className="loginRoot">
+      <Container className="box" maxWidth="sm">
+        <img className="logoImg" src={logo} alt="Logo" />
+        <div className="textAppName">
+          Sticky Sessions
+        </div>
         <GoogleLoginButton signInCallback={this.signInCallback.bind(this)} />
+        <span className="textVersion">
+          v 00.00.02
+        </span>
       </Container>
+      </div>
     );
   }
 }
