@@ -8,7 +8,7 @@ class App extends React.Component {
 
   // TODO: do not do 'new Server()' here
   dataSource: DataSource = new Server('http://127.0.0.1:3000')
-  
+
   loginCallback(result: IResultObj) {
     console.log('App, result:', result)
     this.dataSource.getNotesFromSession('mySessionId')

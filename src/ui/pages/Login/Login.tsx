@@ -9,7 +9,6 @@ import logo from '../../../assets/logo.svg'
 import './Login.css';
 export interface IResultObj {
   success: Boolean,
-  user?: Object
 }
 
 interface LoginProps {
@@ -18,19 +17,12 @@ interface LoginProps {
 
 class Login extends React.Component<LoginProps, {}> {
 
-  constructor(props: LoginProps) {
-    super(props)
-    console.log('constructor props', props)
-    console.log('this constructor props', this.props)
-  }
-
   signInCallback(result: IResultObj) {
     console.log('Login:', result)
     if (result.success) {
       console.log('SUCCESS')
     }
 
-    console.log('props:', this.props)
     if (!this.props) {
         console.log('props undefined')
         return
