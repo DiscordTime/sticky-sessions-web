@@ -2,33 +2,52 @@ import React from 'react';
 
 import { Container } from '@material-ui/core';
 import GoogleLoginButton from '../../components/GoogleLoginButton/GoogleLoginButton'
+import { UserRepository } from '../../../data/repository/UserRepository'
+import { UserDataSource } from '../../../data/datasource/UserDataSource'
+import { NoteDataSource } from '../../../data/datasource/NoteDataSource'
+import { Server } from '../../../data/datasource/Server'
 
 //Assets
 import logo from '../../../assets/logo.svg'
 //Css
 import './Login.css';
-export interface IResultObj {
-  success: Boolean,
+
+export type Nullable<T> = T | undefined | null
+
+export interface UserRequest {
+  name: string,
+  email: string,
+  idToken: string,
+}
+
+export interface IResultRequest {
+  success: boolean
 }
 
 interface LoginProps {
-  loginCallback: (returnObj: IResultObj) => void
+  loginCallback: (req: IResultRequest) => void
 }
 
 class Login extends React.Component<LoginProps, {}> {
 
-  signInCallback(result: IResultObj) {
-    console.log('Login:', result)
-    if (result.success) {
-      console.log('SUCCESS')
+  // TODO: for testing
+  userDS = new UserDataSource()
+  userRepo = new UserRepository(this.userDS)
+  dataSource: NoteDataSource = new Server('http://127.0.0.1:3000', this.userRepo)
+
+  signInCallback(result: Nullable<UserRequest>) {
+    if (!result) {
+      this.props.loginCallback({ success: false })
     }
 
-    if (!this.props) {
-        console.log('props undefined')
-        return
+    console.log('loginCallback:', JSON.stringify(result))
+    try {
+      this.userRepo.addUser(result)
+    } catch(err) {
+      return
     }
-    if (this.props.loginCallback)
-        this.props.loginCallback(result)
+
+    this.dataSource.getNotesFromSession('arandomid')
   }
 
   render() {

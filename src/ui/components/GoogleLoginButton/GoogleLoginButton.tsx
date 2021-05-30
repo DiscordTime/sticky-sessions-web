@@ -7,32 +7,24 @@ import './GoogleLoginButton.css'
 // Assets
 import logoGoogle from '../../../assets/google.svg';
 
-import { IResultObj } from '../../pages/Login/Login'
-
+import { Nullable, UserRequest } from '../../pages/Login/Login'
 
 interface IGoogleLoginButtonProps {
-  signInCallback: (returnObj: IResultObj) => void
+  signInCallback: (returnObj: Nullable<UserRequest>) => void
 }
 
 class GoogleLoginButton extends React.Component<IGoogleLoginButtonProps, {}> {
 
-  constructor(props: IGoogleLoginButtonProps) {
-    super(props)
-    this.state = {
-      signInCallback: props.signInCallback
-    }
-  }
-
   async signInGoogle() {
     const firebaseAuth = new FirebaseAuth()
-    let result: IResultObj
+    var user: Nullable<UserRequest>
     try {
-      const user = await firebaseAuth.signInGoogle()
-      result = user
+      user = await firebaseAuth.signInGoogle()
     } catch(error) {
-      result = { success: false }
+      user = undefined
+      console.log('[GoogleLoginButton], error:', error)
     }
-    this.props.signInCallback(result)
+    this.props.signInCallback(user)
   }
 
   render() {

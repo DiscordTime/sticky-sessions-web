@@ -1,5 +1,5 @@
 import { Note } from '../entities/Note'
-export interface DataSource {
+export interface NoteDataSource {
   getNotesFromSession(sessionId: string): Note[]
 }
 
