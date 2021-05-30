@@ -1,9 +1,11 @@
 import { UserDataSource } from '../datasource/UserDataSource'
 import { Nullable, UserRequest } from '../../ui/pages/Login/Login'
 import { User } from '../entities/User'
+import { Logger } from '../../utils/Logger'
 
 export class UserRepository {
 
+  static TAG = UserRepository.name
   userDS: UserDataSource
 
   constructor(userDataSource: UserDataSource) {
@@ -15,7 +17,7 @@ export class UserRepository {
       throw new Error('Could not add user')
     }
 
-    console.log('[UserRepository], user:', user)
+    Logger.log(UserRepository.TAG, 'user: ' + JSON.stringify(user))
     this.userDS.addUser(user)
   }
 

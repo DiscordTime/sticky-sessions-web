@@ -6,6 +6,7 @@ import { UserRepository } from '../../../data/repository/UserRepository'
 import { UserDataSource } from '../../../data/datasource/UserDataSource'
 import { NoteDataSource } from '../../../data/datasource/NoteDataSource'
 import { Server } from '../../../data/datasource/Server'
+import { Logger } from '../../../utils/Logger'
 
 //Assets
 import logo from '../../../assets/logo.svg'
@@ -30,24 +31,31 @@ interface LoginProps {
 
 class Login extends React.Component<LoginProps, {}> {
 
-  // TODO: for testing
+  static TAG = Login.name
+
   userDS = new UserDataSource()
   userRepo = new UserRepository(this.userDS)
+  // TODO: for testing
   dataSource: NoteDataSource = new Server('http://127.0.0.1:3000', this.userRepo)
 
-  signInCallback(result: Nullable<UserRequest>) {
+  async signInCallback(result: Nullable<UserRequest>) {
     if (!result) {
       this.props.loginCallback({ success: false })
+      return
     }
 
-    console.log('loginCallback:', JSON.stringify(result))
     try {
       this.userRepo.addUser(result)
     } catch(err) {
       return
     }
 
-    this.dataSource.getNotesFromSession('arandomid')
+    try {
+      const notes = await this.dataSource.getNotesFromSession('arandomid')
+      Logger.log(Login.TAG, notes.toString())
+    } catch(er) {
+      Logger.log(Login.TAG, '[Error] ' + er)
+    }
   }
 
   render() {

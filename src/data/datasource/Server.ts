@@ -2,9 +2,11 @@ import { NoteDataSource } from './NoteDataSource'
 import { UserRepository } from '../repository/UserRepository'
 import { Note } from '../entities/Note'
 import { User } from '../entities/User'
+import { Logger } from '../../utils/Logger'
 
 export class Server implements NoteDataSource {
 
+  static TAG = Server.name
   url: string
   userRepo: UserRepository
 
@@ -14,24 +16,28 @@ export class Server implements NoteDataSource {
   }
 
   // TODO: Needs a callback or to return a Promise-compatible
-  getNotesFromSession(sessionId: string): Note[] {
-    console.log('url:', this.url)
-    console.log('sessionId:', sessionId)
+  async getNotesFromSession(sessionId: string): Promise<Note[]> {
+    Logger.log(Server.TAG, 'sessionId: ' + sessionId)
     var idToken: string = ''
     try {
       const user: User = this.userRepo.getUser()
-      console.log('the-user', user)
       idToken = user.idToken
     } catch (err) {
+        throw err
+    }
+    Logger.log(Server.TAG, 'token: ' + idToken)
+    let url = this.url + '/notes&type=all&sessionId=' + sessionId
+    Logger.log(Server.TAG, 'url: ' + url)
+    try {
+      const res = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Token': idToken
+        }
+      })
+      return await res.json()
+    } catch(err) {
       return []
     }
-    console.log('User idToken=' + idToken)
-    let url = this.url + '/notes&type=all&sessionId=' + sessionId
-    console.log('fetch in:', url)
-    fetch(url)
-      .then(res => res.json())
-      .then(data => console.log(data))
-
-    return []
   }
 }

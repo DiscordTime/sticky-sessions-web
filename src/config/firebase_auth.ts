@@ -2,10 +2,13 @@
 import firebase from 'firebase/app'
 import { auth, Providers } from './firebase'
 import { UserRequest } from '../ui/pages/Login/Login'
+import { Logger } from '../utils/Logger'
 
 class FirebaseAuth {
+
+  static TAG = FirebaseAuth.name
+
   mapRequestToUser(result: firebase.auth.UserCredential): UserRequest {
-    console.log('mapRequestToUser', result)
     if (result === null || !result.user) {
       throw new Error('Could not get user')
     }
@@ -27,7 +30,7 @@ class FirebaseAuth {
       const result = await auth.signInWithPopup(Providers.google)
       return this.mapRequestToUser(result)
     } catch(error) {
-      console.log('GoogleLoginButton error:', error)
+      Logger.log(FirebaseAuth.TAG, '[Error] ' + error)
       throw error
     }
   }

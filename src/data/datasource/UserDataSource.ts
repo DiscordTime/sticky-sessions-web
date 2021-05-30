@@ -1,6 +1,7 @@
 import { CookiesDataSource } from './CookiesDataSource'
 import { UserRequest, Nullable } from '../../ui/pages/Login/Login'
 import { User } from '../entities/User'
+import { Logger } from '../../utils/Logger'
 
 export class UserDataSource {
 
@@ -9,9 +10,9 @@ export class UserDataSource {
   cookiesDS = new CookiesDataSource()
 
   addUser(user: Nullable<UserRequest>) {
-    console.log('UserDS:', JSON.stringify(user))
+    Logger.log(UserDataSource.TAG, 'add user: ' + JSON.stringify(user))
     if (!user) {
-      console.log('[' + UserDataSource.TAG + '] could not add user')
+      Logger.log(UserDataSource.TAG, 'Could not add User')
       throw new Error()
     }
 
@@ -22,13 +23,11 @@ export class UserDataSource {
   getUser(): User {
     const userCookie = this.cookiesDS.getCookie('user')
     if (!userCookie) {
-      console.log('[' + UserDataSource.TAG + '] could not get user')
+      Logger.log(UserDataSource.TAG, 'Could get User')
       throw new Error()
     }
 
-
     const user = Object.assign(new User(), userCookie) 
-    console.log('[' + UserDataSource + '] user:', user)
     return user
   }
 }

@@ -9,11 +9,15 @@ import logoGoogle from '../../../assets/google.svg';
 
 import { Nullable, UserRequest } from '../../pages/Login/Login'
 
+import { Logger } from '../../../utils/Logger'
+
 interface IGoogleLoginButtonProps {
   signInCallback: (returnObj: Nullable<UserRequest>) => void
 }
 
 class GoogleLoginButton extends React.Component<IGoogleLoginButtonProps, {}> {
+
+  static TAG = GoogleLoginButton.name
 
   async signInGoogle() {
     const firebaseAuth = new FirebaseAuth()
@@ -22,7 +26,7 @@ class GoogleLoginButton extends React.Component<IGoogleLoginButtonProps, {}> {
       user = await firebaseAuth.signInGoogle()
     } catch(error) {
       user = undefined
-      console.log('[GoogleLoginButton], error:', error)
+      Logger.log(GoogleLoginButton.TAG, '[Error]: ' + error)
     }
     this.props.signInCallback(user)
   }
